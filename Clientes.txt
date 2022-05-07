@@ -1,0 +1,2 @@
+Pablo,choripan123,13000.0,pablito123@gmail.com
+Guayo,123,100000.0,guayo@gmail.com
