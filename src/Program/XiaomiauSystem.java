@@ -40,7 +40,9 @@ public class XiaomiauSystem
 		exitSystem(clients,products,sales);
 		
 	}
-	
+	/*
+	 * this function read files.txt, load and save program data
+	 */
 	public static void readArchs(ClientContainer clients, ProductContainer products, SaleContainer sales) throws FileNotFoundException
 	{
 		Scanner arch1 = new Scanner(new File("Clientes.txt"));
@@ -80,7 +82,12 @@ public class XiaomiauSystem
 			sales.addSale(sa);
 		}
 	}
-	
+	/*
+	 * this function displays the start menu
+	 * return -13 if Users is admin
+	 * return -5 if user not login
+	 * else return client position in the container
+	 */
 	public static int logInMenu(ClientContainer clients)
 	{
 		Scanner sc = new Scanner(System.in);
@@ -132,7 +139,11 @@ public class XiaomiauSystem
 			
 		return -5;
 	}
-	
+	/*
+	 * this function displays the register menu
+	 * add new client in the container
+	 * return client position in the container
+	 */
 	public static int registerMenu(ClientContainer clients)
 	{
 		System.out.println("Menu de registro");
@@ -170,7 +181,9 @@ public class XiaomiauSystem
 		clients.addClient(cl);
 		return (clients.getCant()-1);
 	}
-	
+	/*
+	 *this function displays user menu
+	 */
 	public static void userMenu(int clientPos, ShoppingCart shoppingCart, ClientContainer clients, ProductContainer products, SaleContainer sales)
 	{
 		Client currentClient = clients.getClientI(clientPos);
@@ -251,7 +264,9 @@ public class XiaomiauSystem
 			}
 		}
 	}
-	
+	/*
+	 *this function displays buy menu and add product in the shopping cart
+	 */
 	public static void buyProduct(ProductContainer products, SaleContainer sales, ShoppingCart shoppingCart, Client currentClient)
 	{
 		Scanner sc = new Scanner(System.in);
@@ -294,7 +309,9 @@ public class XiaomiauSystem
 		}
 		
 	}
-	
+	/*
+	 *this function change client password
+	 */
 	public static void changePassword(Client currentClient)
 	{
 		Scanner sc = new Scanner(System.in);
@@ -303,7 +320,9 @@ public class XiaomiauSystem
 		String password = sc.nextLine();
 		currentClient.setPassword(password);
 	}
-
+	/*
+	 *displays available products
+	 */
 	public static void seeProducts(ProductContainer products)
 	{
 		Scanner sc = new Scanner(System.in);
@@ -317,7 +336,9 @@ public class XiaomiauSystem
 		}
 		String continu = sc.nextLine();
 	}
-	
+	/*
+	 *displays shopping cart
+	 */
 	public static void seeShoppingCart(ShoppingCart shoppingCart)
 	{
 		System.out.println("------------------------------------");
@@ -328,7 +349,9 @@ public class XiaomiauSystem
 			System.out.println("Producto: "+shoppingCart.getSaleI(a).getProductName()+". Cantidad: "+shoppingCart.getSaleI(a).getCantBought()+".");
 		}
 	}
-
+	/*
+	 *this function delete shopping cart
+	 */
 	public static void deleteCart(ShoppingCart shoppingCart, ProductContainer products, SaleContainer sales)
 	{
 		for(int a=0;a<shoppingCart.getCant();a++)
@@ -354,7 +377,9 @@ public class XiaomiauSystem
 		}
 		else { System.out.println("Saldo insuficiente..."); }
 	}
-
+	/*
+	 *this function collects data and closes the system
+	 */
 	public static void exitSystem(ClientContainer clients, ProductContainer products, SaleContainer sales) throws IOException
 	{
 		FileWriter wClients = new FileWriter("Clientes.txt");
